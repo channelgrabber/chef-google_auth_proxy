@@ -51,7 +51,7 @@ action :run do
   end
 
   template "/etc/google_auth_proxy/#{service_name}_allowed_emails" do
-    source 'allowed_emails.erb'
+    source 'allowed_emails.conf.erb'
     owner new_resource.user
     group 'root'
     mode 0640
