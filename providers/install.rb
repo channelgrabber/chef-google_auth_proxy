@@ -46,8 +46,19 @@ action :run do
       listen_address: new_resource.listen_address,
       redirect_url: new_resource.redirect_url,
       upstreams: new_resource.upstreams,
-      authenticated_emails_file: new_resource.authenticated_emails_file
+      authenticated_emails_file: "/etc/google_auth_proxy/#{service_name}_allowed_emails"
     )
+  end
+
+  template "/etc/google_auth_proxy/#{service_name}_allowed_emails" do
+    source 'allowed_emails.erb'
+    owner new_resource.user
+    group 'root'
+    mode 0640
+    variables(
+      allowed_emails: new_resource.allowed_emails
+    )
+    notifies :reload, 'service[google_auth_proxy_stats]', :delayed
   end
 
   template "#{service_name}-upstart" do
