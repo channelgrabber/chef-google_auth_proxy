@@ -45,7 +45,8 @@ action :run do
       google_apps_domains: new_resource.google_apps_domains,
       listen_address: new_resource.listen_address,
       redirect_url: new_resource.redirect_url,
-      upstreams: new_resource.upstreams
+      upstreams: new_resource.upstreams,
+      authenticated_emails_file: new_resource.authenticated_emails_file
     )
   end
 
