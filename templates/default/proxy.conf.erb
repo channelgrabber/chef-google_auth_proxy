@@ -17,7 +17,9 @@ google_apps_domains = [
 client_id = "<%= @client_id %>"
 client_secret = "<%= @client_secret %>"
 
+<% if @authenticated_emails_file %>
 authenticated_emails_file = "<%= @authenticated_emails_file %>"
+<% end %>
 # htpasswd_file = ""
 
 cookie_secret = "<%= @cookie_secret %>"
