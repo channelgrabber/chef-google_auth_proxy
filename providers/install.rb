@@ -49,7 +49,7 @@ action :run do
     )
   end
 
-  unless allowed_emails.empty?
+  unless new_resource.allowed_emails.empty?
     template "/etc/google_auth_proxy/#{service_name}_allowed_emails" do
       source 'allowed_emails.conf.erb'
       cookbook 'google_auth_proxy'
